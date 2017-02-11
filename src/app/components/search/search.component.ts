@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
+import { Artist } from '../../../Artist';
+// import { ROUTER_DIRECTIVES } form '@angular/router'
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  providers: [SpotifyService]
+  providers: [SpotifyService],
+  // directives:[ROUTER_DIRECTIVES]
 })
-export class SearchComponent implements OnInit {
 
+export class SearchComponent implements OnInit {
   searchStr: string;
+  searchRes: Artist[];
 
   constructor(private _spotifyService: SpotifyService) {
-    this._spotifyService.searchMusic(this.searchStr).subscribe(res => {
-      console.log(res.artists.items)
-    })
   }
 
   ngOnInit() {
   }
 
   searchMusic() {
-    
+    console.log('test')
+    this._spotifyService.searchMusic(this.searchStr).subscribe(res => {
+      this.searchRes = res.artists.items;
+    })
   }
 
 }
