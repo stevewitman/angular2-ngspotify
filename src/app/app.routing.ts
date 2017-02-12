@@ -17,7 +17,7 @@ const appRoutes: Routes = [
   {
     path: 'artist/:id',
     component: ArtistComponent
-  }
+  },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
